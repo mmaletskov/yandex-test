@@ -1,34 +1,60 @@
-// const marquee = document.getElementById("marquee");
-// const textElements = document.querySelectorAll("#text");
-// const dotElements = document.querySelectorAll("#dot");
-// const speed = 50;
+const sliderTrack = document.querySelector(".slider-track");
+const slides = document.querySelectorAll(".slide");
+const prevButton = document.querySelector(".prev-button");
+const nextButton = document.querySelector(".next-button");
+const dotsContainer = document.querySelector(".dots");
 
-// let totalWidth = 0;
+let currentSlide = 0;
+let slideWidth = slides[0].offsetWidth;
 
-// textElements.forEach((text) => (totalWidth += text.offsetWidth));
-// dotElements.forEach((dot) => (totalWidth += dot.offsetWidth));
+const createDots = () => {
+  slides.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.addEventListener("click", () => {
+      currentSlide = index;
+      updateSlider();
+      updateDots();
+    });
+    dotsContainer.appendChild(dot);
+  });
+};
 
-// let offset = 0;
+const updateSlider = () => {
+  slides.forEach((slide, index) => {
+    if (index === currentSlide) {
+      slide.classList.add("active");
+    } else {
+      slide.classList.remove("active");
+    }
+  });
+};
 
-// function scrollText() {
-//   offset -= 1;
+const updateDots = () => {
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, index) => {
+    if (index === currentSlide) {
+      dot.classList.add("active");
+    } else {
+      dot.classList.remove("active");
+    }
+  });
+};
 
-//   if (offset < -totalWidth) {
-//     offset = marquee.offsetWidth;
-//   }
+const nextSlide = () => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlider();
+  updateDots();
+};
 
-//   textElements.forEach(
-//     (text) => 
-//         {
-//             text.style.transform = translateX(${offset}px);
-//         }
-//   );
-//   dotElements.forEach(
-//     (dot) => 
-//         {
-//             dot.style.transform = translateX(${offset}px);
-//         }
-//   );
-// }
+const prevSlide = () => {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  updateSlider();
+  updateDots();
+};
 
-// // setInterval(scrollText, speed);
+createDots();
+updateDots();
+
+nextButton.addEventListener("click", nextSlide);
+prevButton.addEventListener("click", prevSlide);
