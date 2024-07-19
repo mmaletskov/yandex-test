@@ -23,6 +23,8 @@ const countContainerMob = document.querySelector(".count__mob");
 let currentSlide = 0;
 let count = 1;
 let slideWidth = slides[0].offsetWidth;
+const slideWidthh = 150 + 20; // Ширина карточки + отступы
+
 
 const createDots = () => {
   slides.forEach((_, index) => {
@@ -97,14 +99,19 @@ const nextSlide = () => {
 
 const slideNext = () => {
   currentSlide = (currentSlide + 1) % slidess.length;
+  slider.style.transform = 'translateX(-${currentSlide * 400}px)';
   updateSliderTwo();
   updateCount();
 }
+setInterval(slideNext, 4000); 
+
+
 const slidePrev = () => {
   currentSlide = (currentSlide - 1 + slidess.length) %  slidess.length;
   updateSliderTwo();
   updateCount();
 }
+setInterval(slidePrev, 8000); 
 
 const prevSlide = () => {
   currentSlide = (currentSlide - 1 + slides.length) % slides.length;
@@ -114,15 +121,19 @@ const prevSlide = () => {
 
 const slideGo = () => {
   currentSlide = (currentSlide + 1) % sliderItem.length;
+  sliderItems.style.transform = 'translateX(-${currentSlide * slideWidthh}px)';
   updateSliderThree();
   updateCountTwo();
 }
+setInterval(slideGo, 4000); 
 
 const slideBack = () => {
   currentSlide = (currentSlide - 1 + sliderItem.length) %  sliderItem.length;
   updateSliderThree();
   updateCountTwo();
 }
+
+
 
 
 createDots();
