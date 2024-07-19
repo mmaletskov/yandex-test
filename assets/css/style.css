@@ -637,6 +637,175 @@ legend {
 }
 /* stages-end */
 
+
+
+/* participants */
+.participants{
+  width: 100%;
+
+  margin-bottom: 140px;
+}
+.participants__inner{
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+.participants__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.participants__header-title{
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-size: 64px;
+
+  text-transform: uppercase;
+}
+.participants__element-control{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #313131;
+}
+.participants__element-control span{
+  opacity: 60%;
+}
+.participants__slider{
+  width: 100%;
+
+  overflow: hidden;
+}
+.slider__items{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  position: relative;
+}
+
+.slider__item {
+  display: none;
+
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.slider__item-mobile{
+  display: none;
+}
+
+.mobile{
+  display: none;
+}
+
+.slider__item.active {
+  display: flex; /* Показываем только активный слайд */
+  gap: 20px;
+  justify-content: center;
+}
+
+.slider__item:last-child {
+  margin-right: 0;
+}
+
+.slider__item-element{
+  max-width: 394px;
+  padding: 0 37px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  
+
+  text-align: center; 
+}
+.slider__item-element h2{
+  font-family: "Golos Text", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #313131;
+}
+.slider__item-element h4{
+  font-family: "Golos Text", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #313131;
+
+  opacity: 60%;
+}
+
+.item__element-more{
+  display: inline-block;
+
+
+  border: 1px solid #3057A2;
+
+  padding:10px 12px;
+  max-width: 113px;
+  border-radius: 62px;
+  margin: 0 auto;
+
+  font-family: "Golos Text", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #3057A2;
+
+ vertical-align: middle;
+}
+
+.item__element-more:hover{
+  background-color: #3057A2;
+  color: white;
+}
+
+.button__prev {
+  left: 20px;
+}
+.button__prev img{
+  width: 36px;
+  height: 36px;
+}
+.button__prev img:hover{
+  content: url("../images/buttonleft.svg");
+}
+
+.button__next {
+  right: 20px;
+}
+.button__next img{
+  width: 36px;
+  height: 36px;
+
+}
+.button__next img:hover{
+  content: url("../images/buttonright.svg");
+}
+/* participants-end */
+
+/* footer */
+footer{
+  background-color: #E9DED4;
+  padding: 45px 0 72px 0;
+}
+.footer_content p{
+  color: #313131;
+  opacity: 60%;
+  font-size: 15px;
+  font-family: "Golos Text", sans-serif;
+}
+/* footer-end */
+
+
+
 /* media */
 @media (max-width: 1025px) {
   .support__inner-info {
@@ -798,6 +967,36 @@ legend {
     right: 60px;
   }
 
+  .participants__header{
+    flex-direction: column  ;
+  }
+  .participants__header-title{
+    font-size: 36px;
+  }
+  .slider__items{
+    display: none;
+  }
+  .participants__element-control{
+    display: none;
+  }
+  .slider__items-mobile{
+    display: flex;
+    margin-bottom: 40px;
+  }
+  .slider__item-mobile{
+    display: none;
+  }
+  .slider__item-mobile.active{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .mobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .slide {
     display: none;
     background: url("../images/Frame48095629.png");
@@ -824,6 +1023,9 @@ legend {
   }
   .slide__copy p{
     text-align: left;
+  }
+  .footer_content{
+    width: 335px;
   }
 }
 /* media-end */
